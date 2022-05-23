@@ -6,18 +6,32 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Add_close extends AppCompatActivity {
+
+    ArrayList<String> infoList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_close);
 
         final Spinner itemCategory = (Spinner) findViewById(R.id.itemCategory);
+        final Spinner info = (Spinner) findViewById(R.id.info);
 
         String[] itemList = getResources().getStringArray(R.array.itemCategory);
+        infoList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.topInfo)));
+
+        final ArrayAdapter<String> adapter_info = new ArrayAdapter<String>(this,R.layout.spinner_item,infoList);
+        adapter_info.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        info.setAdapter(adapter_info);
 
         final ArrayAdapter<String> adapter_item = new ArrayAdapter<String>(this,R.layout.spinner_item,itemList);
         adapter_item.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -28,6 +42,15 @@ public class Add_close extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 // 이 메소드에서 position이 몇번째 값이 클릭됐는지 알 수 있음
                 // getItemAtPosition(position)을 통해서 해당 값을 받아올 수 있음
+                if(i == 2) {
+                    infoList.clear();
+                    infoList.addAll(Arrays.asList(getResources().getStringArray(R.array.bottomInfo)));
+                }else {
+                    infoList.clear();
+                    infoList.addAll(Arrays.asList(getResources().getStringArray(R.array.topInfo)));
+                }
+                adapter_info.notifyDataSetChanged();
+
             }
 
             @Override
