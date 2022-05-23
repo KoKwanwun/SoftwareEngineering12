@@ -77,9 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
         //api 불러오기까지 대기(스레드 완료 대기)
         while(!apiFinished){ }
-
+        WindChillTemperature calculater = new WindChillTemperature(temperature,rainPerHour,wind,humidity,precipitation);
+        double wct = calculater.calculate();
         //api 테스트 코드
-        Toast.makeText(this, String.valueOf(wind), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
         //
 
         /*
