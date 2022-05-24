@@ -6,64 +6,64 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml
+8-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml
+9-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:5:5-67
-11-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:5:22-64
+11-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:7:5-32:19
+13-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:7:5-32:19
 14        android:allowBackup="true"
-14-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:8:9-35
+14-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 15-->[androidx.core:core:1.7.0] C:\Users\PC\.gradle\caches\transforms-3\02483169c4c9e0ddffa88758188ac6f1\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
-17-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:9:9-43
+17-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:9:9-43
 18        android:label="@string/app_name"
-18-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:10:9-41
+18-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:10:9-41
 19        android:roundIcon="@mipmap/ic_launcher_round"
-19-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:12:9-54
+19-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:12:9-54
 20        android:supportsRtl="true"
-20-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:13:9-35
+20-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:13:9-35
 21        android:testOnly="true"
 22        android:theme="@style/Theme.SoftwareEngineering"
-22-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:14:9-57
+22-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:14:9-57
 23        android:usesCleartextTraffic="true" >
-23-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:11:9-44
+23-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:11:9-44
 24        <activity
-24-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:15:9-23:20
+24-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:15:9-23:20
 25            android:name="com.gachon.softwareengineering.LoadingActivity"
-25-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:16:13-44
+25-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:16:13-44
 26            android:exported="true" >
-26-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:17:13-36
+26-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:17:13-36
 27            <intent-filter>
-27-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:18:13-22:29
+27-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:18:13-22:29
 28                <action android:name="android.intent.action.MAIN" />
-28-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:19:17-69
-28-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:19:25-66
+28-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:19:17-69
+28-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:19:25-66
 29
 30                <category android:name="android.intent.category.LAUNCHER" />
-30-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:21:17-77
-30-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:21:27-74
+30-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:21:17-77
+30-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:21:27-74
 31            </intent-filter>
 32        </activity>
 33        <activity
-33-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:24:9-27:20
+33-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:24:9-27:20
 34            android:name="com.gachon.softwareengineering.MainActivity"
-34-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:25:13-41
+34-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:25:13-41
 35            android:exported="true" >
-35-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:26:13-36
+35-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:26:13-36
 36        </activity>
 37        <activity
-37-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:28:9-31:20
+37-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:28:9-31:20
 38            android:name="com.gachon.softwareengineering.Add_close"
-38-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:29:13-38
+38-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:29:13-38
 39            android:exported="true" >
-39-->C:\Users\PC\AndroidStudioProjects\SoftwareEngineering12-seongguk\SoftwareEngineering12-seongguk\app\src\main\AndroidManifest.xml:30:13-36
+39-->C:\Users\PC\Documents\GitHub\SoftwareEngineering12\app\src\main\AndroidManifest.xml:30:13-36
 40        </activity>
 41
 42        <provider

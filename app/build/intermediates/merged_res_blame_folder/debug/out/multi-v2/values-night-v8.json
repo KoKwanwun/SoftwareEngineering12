@@ -1,8 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\PC\\AndroidStudioProjects\\SoftwareEngineering12-seongguk\\SoftwareEngineering12-seongguk\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\PC\\Documents\\GitHub\\SoftwareEngineering12\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\PC\\Documents\\GitHub\\SoftwareEngineering12\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endLines": "14",
+                        "endColumns": "12",
+                        "endOffsets": "828"
+                    },
+                    "to": {
+                        "startLines": "33",
+                        "startColumns": "4",
+                        "startOffsets": "3386",
+                        "endLines": "45",
+                        "endColumns": "12",
+                        "endOffsets": "4112"
+                    }
+                },
                 {
                     "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-3\\f791586eb8e3cddcf33fb36842d7675a\\transformed\\appcompat-1.4.1\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
@@ -35,25 +54,6 @@
                         "startOffsets": "732,807,918,1007,1108,1215,1322,1421,1524,1612,1736,1838,1940,2056,2158,2272,2400,2516,2638,2774,2894,3028,3148,3260,4206,4323,4447,4577,4699,4837,4971,5087",
                         "endColumns": "74,110,88,100,106,106,98,102,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
                         "endOffsets": "802,913,1002,1103,1210,1317,1416,1519,1607,1731,1833,1935,2051,2153,2267,2395,2511,2633,2769,2889,3023,3143,3255,3381,4318,4442,4572,4694,4832,4966,5082,5202"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\PC\\AndroidStudioProjects\\SoftwareEngineering12-seongguk\\SoftwareEngineering12-seongguk\\app\\src\\main\\res\\values-night\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "100",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "828"
-                    },
-                    "to": {
-                        "startLines": "33",
-                        "startColumns": "4",
-                        "startOffsets": "3386",
-                        "endLines": "45",
-                        "endColumns": "12",
-                        "endOffsets": "4112"
                     }
                 }
             ]

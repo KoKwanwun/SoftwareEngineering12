@@ -1,20 +1,31 @@
 package com.gachon.softwareengineering;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 // fragment 활용 메인화면 설정
 
 public class MainActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigationView;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private Fragment_closet fragmentCloset = new Fragment_closet();
+    private Fragment_home fragmentHome = new Fragment_home();
+    private Fragment_weather fragmentWeather = new Fragment_weather();
 
     WeatherAPI api;
     boolean apiFinished = false;
@@ -31,51 +42,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
+        bottomNavigationView.setSelectedItemId(R.id.menu_home);
 
         //API
         api = new WeatherAPI();
         APIthread apiThread = new APIthread();
         apiThread.start();
-        //
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Fragment_home fragment_home = new Fragment_home();
-        transaction.replace(R.id.frame, fragment_home);
-        transaction.commit();
-
-        closet = (Button) findViewById(R.id.closet);
-        home = (Button) findViewById(R.id.home);
-        weather = (Button) findViewById(R.id.weather);
-
-        closet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment_closet fragment_closet = new Fragment_closet();
-                transaction.replace(R.id.frame, fragment_closet);
-                transaction.commit();
-            }
-        });
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment_home fragment_home = new Fragment_home();
-                transaction.replace(R.id.frame, fragment_home);
-                transaction.commit();
-            }
-        });
-
-        weather.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragment_weather fragment_weather = new Fragment_weather();
-                transaction.replace(R.id.frame, fragment_weather);
-                transaction.commit();
-            }
-        });
 
         //api 불러오기까지 대기(스레드 완료 대기)
         while(!apiFinished){ }
@@ -93,6 +70,26 @@ public class MainActivity extends AppCompatActivity {
         humidity: 습도(%)
         precipitation: 강수형태(없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7))
          */
+    }
+
+    class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+            switch (menuItem.getItemId()) {
+                case R.id.menu_closet:
+                    transaction.replace(R.id.main_frameLayout, fragmentCloset).commitAllowingStateLoss();
+                    break;
+                case R.id.menu_home:
+                    transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
+                    break;
+                case R.id.menu_weather:
+                    transaction.replace(R.id.main_frameLayout, fragmentWeather).commitAllowingStateLoss();
+                    break;
+            }
+            return true;
+        }
     }
 
     //api용 Thread
