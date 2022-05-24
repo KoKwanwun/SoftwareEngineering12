@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 // fragment 활용 메인화면 설정
 
 public class MainActivity extends AppCompatActivity {
@@ -77,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         //api 불러오기까지 대기(스레드 완료 대기)
         while(!apiFinished){ }
-        WindChillTemperature calculater = new WindChillTemperature(temperature,rainPerHour,wind,humidity,precipitation);
-        double wct = calculater.calculate();
+        WindChillTemperature calculator = new WindChillTemperature(temperature,rainPerHour,wind,humidity,precipitation);
+        double wct = calculator.calculate();
+        RecommendCloth recommend = new RecommendCloth(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),calculator);
         //api 테스트 코드
         Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
         //
