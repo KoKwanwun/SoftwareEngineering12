@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_closet"
+        android:icon="@drawable/closet"
+        android:title="옷장" />
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/clothes"
+        android:title="오늘의옷" />
+
+    <item
+        android:id="@+id/menu_weather"
+        android:icon="@drawable/weather"
+        android:title="날씨" />
+</menu>
