@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private float wind = 0.0F;
     private int humidity = 0;
     private int precipitation = 0;
+    private float maxTemp = 0.0F;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         wind: 풍속(m/s)
         humidity: 습도(%)
         precipitation: 강수형태(없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7))
+        maxTemp: 최고기온
          */
     }
 
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 wind = api.getWind();
                 humidity = api.getHumidity();
                 precipitation = api.getPrecipitation();
+                maxTemp = api.getMaxTemp();
 
                 apiFinished = true;
             }catch(Exception e){
