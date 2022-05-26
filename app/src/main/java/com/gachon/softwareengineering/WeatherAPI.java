@@ -48,12 +48,11 @@ public class WeatherAPI {
 
     //불러온 날씨 데이터
     private float temperature = 0.0F;
+    private float maxTemp = 0.0F;
     private float rainPerHour = 0.0F;
     private float wind = 0.0F;
     private int humidity = 0;
     private int precipitation = 0;
-
-    private float maxTemp = 0.0F;
 
     public WeatherAPI(){ }
 

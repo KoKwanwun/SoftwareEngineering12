@@ -30,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
     WeatherAPI api;
     boolean apiFinished = false;
     Button closet, home, weather;
+    Bundle bundle;
 
     //불러온 날씨 데이터
-    private float temperature = 0.0F;
-    private float rainPerHour = 0.0F;
-    private float wind = 0.0F;
-    private int humidity = 0;
-    private int precipitation = 0;
-    private float maxTemp = 0.0F;
+    WindChillTemperature calculator = new WindChillTemperature();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         //api 불러오기까지 대기(스레드 완료 대기)
         while(!apiFinished){ }
-        WindChillTemperature calculator = new WindChillTemperature(temperature,rainPerHour,wind,humidity,precipitation);
+
         double wct = calculator.calculate();
+        //날씨 프래그먼트으로 날씨정보 보내기
+        bundle = new Bundle();
+        bundle.putSerializable("weather",calculator);
+        fragmentWeather.setArguments(bundle);
+
         RecommendCloth recommend = new RecommendCloth(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),calculator);
         //api 테스트 코드
         Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
@@ -100,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
             try{
                 api.apiLoad();
 
-                temperature = api.getTemperature();
-                rainPerHour = api.getRainPerHour();
-                wind = api.getWind();
-                humidity = api.getHumidity();
-                precipitation = api.getPrecipitation();
-                maxTemp = api.getMaxTemp();
+                calculator.temperature = api.getTemperature();
+                calculator.rainPerHour = api.getRainPerHour();
+                calculator.wind = api.getWind();
+                calculator.humidity = api.getHumidity();
+                calculator.precipitation = api.getPrecipitation();
+                calculator.maxTemp = api.getMaxTemp();
 
                 apiFinished = true;
             }catch(Exception e){

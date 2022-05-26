@@ -49,12 +49,7 @@ public class RecommendCloth {
         this.clothes_bottom = clothes_bottom;
         this.weather = weather;
 
-        for(int i = 0; i < 8; i++){
-            if(temperature_criteria[i]<weather.WCT) {
-                temperature_level = i;
-                break;
-            }
-        }
+        setLevel();
     }
 
     public void setLevel(){
