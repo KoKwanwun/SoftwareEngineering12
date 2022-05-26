@@ -18,7 +18,7 @@ public class Fragment_weather extends Fragment implements View.OnClickListener {
     }
 
     @Nullable
-    @Override소
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.menu_weather, container, false);
         //날씨데이터 메인액티비티로부터 수신
