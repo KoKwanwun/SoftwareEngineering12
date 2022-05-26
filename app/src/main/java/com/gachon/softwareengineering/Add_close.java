@@ -1,13 +1,16 @@
 package com.gachon.softwareengineering;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Array;
@@ -17,9 +20,13 @@ import java.util.Arrays;
 public class Add_close extends AppCompatActivity {
 
     ArrayList<String> infoList;
+    ListView lvlist;
+    DBHelper mDBHelper;
+    MyAdapter myadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDBHelper=new DBHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_close);
 
@@ -72,6 +79,7 @@ public class Add_close extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 // 이 메소드에서 position이 몇번째 값이 클릭됐는지 알 수 있음
                 // getItemAtPosition(position)을 통해서 해당 값을 받아올 수 있음
+
             }
 
             @Override
@@ -82,10 +90,16 @@ public class Add_close extends AppCompatActivity {
 
         Button signUpClose = findViewById(R.id.signUpClose);
 
+
         signUpClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 버튼 눌렀을때 옷이 등록되어 옷리스트에 정보가 뜨도록 넣어주세요
+                //getSelectedItem().toString으로 문자열로 정상적으로 받을 수 있음.
+               mDBHelper.InsertCloth(itemCategory.getSelectedItem().toString(),thickness.getSelectedItem().toString(),info.getSelectedItem().toString());
+               Toast.makeText(getApplicationContext(), "옷이 옷장에 추가되었습니다!", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -94,8 +108,11 @@ public class Add_close extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 onBackPressed();
+
             }
+
         });
     }
 }

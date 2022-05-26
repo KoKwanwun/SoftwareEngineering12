@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private Fragment_closet fragmentCloset = new Fragment_closet();
     private Fragment_home fragmentHome = new Fragment_home();
     private Fragment_weather fragmentWeather = new Fragment_weather();
+
+    //DB
+    protected ArrayList<Clothes> m_Cloth_list;
+    protected DBHelper mDBHelper;
+    protected ListView cloth_list;
+    protected static MyAdapter myAdapter;
 
     WeatherAPI api;
     boolean apiFinished = false;
@@ -72,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
         precipitation: 강수형태(없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7))
         maxTemp: 최고기온
          */
+        //setInit();
     }
+
+
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override
