@@ -98,8 +98,8 @@ public class Add_close extends AppCompatActivity {
                 //getSelectedItem().toString으로 문자열로 정상적으로 받을 수 있음.
                mDBHelper.InsertCloth(itemCategory.getSelectedItem().toString(),thickness.getSelectedItem().toString(),info.getSelectedItem().toString());
                Toast.makeText(getApplicationContext(), "옷이 옷장에 추가되었습니다!", Toast.LENGTH_SHORT).show();
-
-
+                //((Fragment_closet) getSupportFragmentManager().findFragmentByTag("fragmentCloset")).displayClothes();
+                //System.out.println("데이터 수정이 있을 수 있음으로 디스플레이 메소드 호출");
             }
         });
 
@@ -108,6 +108,9 @@ public class Add_close extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                    //((Fragment_closet) getSupportFragmentManager().findFragmentByTag("fragmentCloset")).displayClothes();
+                    //System.out.println("데이터 수정이 있을 수 있음으로 디스플레이 메소드 호출");
 
                 onBackPressed();
 

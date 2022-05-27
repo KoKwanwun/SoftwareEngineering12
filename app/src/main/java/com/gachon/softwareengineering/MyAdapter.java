@@ -5,12 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class MyAdapter extends BaseAdapter {
+
+    public interface getMode{
+        boolean returnMode();
+    }
+
 
     ArrayList<Clothes> clist=new ArrayList<Clothes>();
 
@@ -38,6 +47,7 @@ public class MyAdapter extends BaseAdapter {
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.cloth_list,viewgroup,false);
+           // another_view=inflater.inflate(R.layout.menu_closet,viewgroup,false);
         }
 
 
@@ -45,12 +55,16 @@ public class MyAdapter extends BaseAdapter {
         TextView tv_type=(TextView) view.findViewById(R.id.tv_type);
         TextView tv_thick=(TextView) view.findViewById(R.id.tv_thick);
         TextView tv_info=(TextView) view.findViewById(R.id.tv_info);
-
+        TextView tv_id=(TextView)view.findViewById(R.id.tv_id);
 
         Clothes now_cloth=clist.get(position);
+        tv_id.setText(String.valueOf(now_cloth.id));
         tv_type.setText(now_cloth.type);
         tv_thick.setText(now_cloth.thickness);
         tv_info.setText(now_cloth.info);
+
+
+
         return view;
     }
 
