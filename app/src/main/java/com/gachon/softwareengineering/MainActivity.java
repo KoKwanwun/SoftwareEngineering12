@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         while(!apiFinished){ }
 
         double wct = calculator.calculate();
+
         //날씨 프래그먼트으로 날씨정보 보내기
         bundle = new Bundle();
         bundle.putSerializable("weather",calculator);
