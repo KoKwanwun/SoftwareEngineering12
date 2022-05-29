@@ -2,15 +2,27 @@ package com.gachon.softwareengineering;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Application;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.icu.text.Normalizer2;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
     private Fragment_closet fragmentCloset = new Fragment_closet();
     private Fragment_home fragmentHome = new Fragment_home();
     private Fragment_weather fragmentWeather = new Fragment_weather();
+
+    //DB
+    protected ArrayList<Clothes> m_Cloth_list;
+    protected DBHelper mDBHelper;
+    protected ListView cloth_list;
+    protected static MyAdapter myAdapter;
+    private static final int G_PERMISSION=1004;
+
+    private String[] PERMISSIONS = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     WeatherAPI api;
     boolean apiFinished = false;
@@ -46,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
 
+
         //API
         api = new WeatherAPI();
         APIthread apiThread = new APIthread();
@@ -55,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         while(!apiFinished){ }
 
         double wct = calculator.calculate();
+
         //날씨 프래그먼트으로 날씨정보 보내기
         bundle = new Bundle();
         bundle.putSerializable("weather",calculator);
@@ -64,7 +90,66 @@ public class MainActivity extends AppCompatActivity {
         //api 테스트 코드
         Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
         //
+        //setInit();
+
+        if (!runtimeCheckPermission(this, PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, G_PERMISSION);
+        } else {
+            // 권한이 있는 경우..
+            Log.i("권한 테스트", "권한이 있네요");
+        }
     }
+
+    public boolean runtimeCheckPermission(Context context,String...permissions){
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case G_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 권한이 이미 있는 경우
+                    Log.i("권한 테스트", "사용자가 권한을 부여해 줬습니다.");
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                    alertDialog.setTitle("앱 권한 설정");
+                    alertDialog.setMessage("설정으로 이동합니다.");
+                    alertDialog.setPositiveButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    // 이 부분은 설정으로 이동하는 코드이므로 안드로이드 운영체제 버전에 따라 상이할 수 있다.
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + getApplicationContext().getPackageName()));
+                                    startActivity(intent);
+                                    dialogInterface.cancel();
+                                }
+                            });
+
+                    alertDialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+
+                    alertDialog.show();
+                }
+        }
+    }
+
+
+
+
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override
