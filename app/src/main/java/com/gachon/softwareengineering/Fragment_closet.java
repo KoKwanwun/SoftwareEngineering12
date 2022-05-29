@@ -105,7 +105,7 @@ public class Fragment_closet extends Fragment implements View.OnClickListener,My
         MyAdapter adapter=new MyAdapter();
         System.out.println("현재 데이터베이스 안에 있는 옷들");
         for (Clothes i:mCloth){
-            System.out.println("id: "+i.id+" type: "+i.type+" thickness: "+i.thickness+" info: "+i.info);
+            System.out.println("id: "+i.id+" type: "+i.type+" thickness: "+i.thickness+" info: "+i.info+" URI: "+i.image);
             adapter.addInformation(i);
         }
         lvlist.setAdapter(adapter);

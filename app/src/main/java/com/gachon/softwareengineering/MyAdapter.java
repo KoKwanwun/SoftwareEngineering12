@@ -1,6 +1,12 @@
 package com.gachon.softwareengineering;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -47,7 +56,6 @@ public class MyAdapter extends BaseAdapter {
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.cloth_list,viewgroup,false);
-           // another_view=inflater.inflate(R.layout.menu_closet,viewgroup,false);
         }
 
 
@@ -57,16 +65,21 @@ public class MyAdapter extends BaseAdapter {
         TextView tv_info=(TextView) view.findViewById(R.id.tv_info);
         TextView tv_id=(TextView)view.findViewById(R.id.tv_id);
 
+
         Clothes now_cloth=clist.get(position);
+        String filename= now_cloth.image;
+        File file=new File(filename);
+        Bitmap bitmap= BitmapFactory.decodeFile(file.getAbsolutePath()); //절대경로를 통해 비트맵 생성 후 삽입
+        iv.setImageBitmap(bitmap);
         tv_id.setText(String.valueOf(now_cloth.id));
         tv_type.setText(now_cloth.type);
         tv_thick.setText(now_cloth.thickness);
         tv_info.setText(now_cloth.info);
 
-
-
         return view;
     }
+
+
 
     public void addInformation(Clothes c){
         clist.add(c);

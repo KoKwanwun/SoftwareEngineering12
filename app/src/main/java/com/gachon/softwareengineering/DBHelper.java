@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {  //db가 생성되었을 때
         //데이터베이스가 생성이 될 떄 호출, 구조는 데이터베이스 -> 테이블 -> 컬럼 ->값
-        db.execSQL("CREATE TABLE IF NOT EXISTS Closet (id INTEGER PRIMARY KEY AUTOINCREMENT, type STRING NOT NULL, thickness STRING NOT NULL, info STRING NOT NULL, img_path STRING DEFAULT NULL )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS Closet (id INTEGER PRIMARY KEY AUTOINCREMENT, type STRING NOT NULL, thickness STRING NOT NULL, info STRING NOT NULL, img_path STRING NOT NULL )");
         System.out.println("데이터베이스 생성 완료");  //만약 테이블에 새로운 콜럼을 추가하거나 바꾸면 앱 삭제하고 다시 실행할 것.
     }
 
@@ -64,9 +64,9 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //insert 문 (임시로 상의 하의 같은 타입과 옷 두께, 정보만 넣는 걸로)
-    public void InsertCloth(String _type,String _thickness, String _info){
+    public void InsertCloth(String _type,String _thickness, String _info,String _imgpath){
         SQLiteDatabase db=getWritableDatabase();
-        db.execSQL("INSERT INTO Closet (type,thickness,info) VALUES('"+_type+"','"+_thickness+"','"+_info+"');");
+        db.execSQL("INSERT INTO Closet (type,thickness,info,img_path) VALUES('"+_type+"','"+_thickness+"','"+_info+"','"+_imgpath+"');");
         //뒤에서 두번 째 세미콜론은 SQL문의 세미콜론
         System.out.println("데이터베이스에 옷 추가 완료");
     }
