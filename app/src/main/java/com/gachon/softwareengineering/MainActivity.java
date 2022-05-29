@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     //DB
     protected ArrayList<Clothes> m_Cloth_list;
     protected DBHelper mDBHelper;
-    protected ListView cloth_list;
+    protected ClothesSet clothesSet;
     protected static MyAdapter myAdapter;
     private static final int G_PERMISSION=1004;
 
@@ -64,12 +64,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
 
+        mDBHelper = new DBHelper(getApplicationContext());
+        m_Cloth_list = mDBHelper.get_cloth_list();
+        clothesSet = new ClothesSet();
+        for(Clothes c :m_Cloth_list){
+            switch (c.type){
+                case "아우터":
+                    clothesSet.outer.add(c);
+                    break;
+                case "상의":
+                    clothesSet.top.add(c);
+                    break;
+                case "하의":
+                    clothesSet.bottom.add(c);
+                    break;
+            }
+        }
 
         //API
         api = new WeatherAPI();
@@ -80,13 +95,18 @@ public class MainActivity extends AppCompatActivity {
         while(!apiFinished){ }
 
         double wct = calculator.calculate();
+        RecommendCloth recommend = new RecommendCloth(clothesSet,calculator);
+        ClothesSet recommendClothes = recommend.recommend();
 
         //날씨 프래그먼트으로 날씨정보 보내기
         bundle = new Bundle();
         bundle.putSerializable("weather",calculator);
         fragmentWeather.setArguments(bundle);
+        bundle = new Bundle();
+        bundle.putSerializable("clothes",recommendClothes);
+        fragmentHome.setArguments(bundle);
+        transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
 
-        RecommendCloth recommend = new RecommendCloth(new ArrayList<>(),new ArrayList<>(),new ArrayList<>(),calculator);
         //api 테스트 코드
         Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
         //

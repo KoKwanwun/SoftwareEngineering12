@@ -56,10 +56,10 @@ public class RecommendCloth {
     RecommendCloth(){
     }
 
-    RecommendCloth(ArrayList<Clothes> clothes_outer,ArrayList<Clothes> clothes_top,ArrayList<Clothes> clothes_bottom, WindChillTemperature weather){
-        this.clothes_outer = clothes_outer;
-        this.clothes_top = clothes_top;
-        this.clothes_bottom = clothes_bottom;
+    RecommendCloth(ClothesSet clothesSet, WindChillTemperature weather){
+        this.clothes_outer = clothesSet.outer;
+        this.clothes_top = clothesSet.top;
+        this.clothes_bottom = clothesSet.bottom;
         this.weather = weather;
 
         setWeatherLevel();
@@ -113,15 +113,15 @@ public class RecommendCloth {
 
         if(level <= 1)return null;//이땐 안입음
         else if(2 <= level && level <= 3){
-            condition_list.add(new Condition(0,null));
-            condition_list.add(new Condition(1,null));
+            condition_list.add(new Condition("매우 얇음",null));
+            condition_list.add(new Condition("얇음",null));
         }
         else if(4 <= level && level <= 5){
-            condition_list.add(new Condition(2,null));
-            condition_list.add(new Condition(3,null));
+            condition_list.add(new Condition("보통",null));
+            condition_list.add(new Condition("두꺼움",null));
         }
         else if(6 <= level ){
-            condition_list.add(new Condition(4, null));
+            condition_list.add(new Condition("매우 두꺼움", null));
         }
 
         return chooseClothes(clothes_outer,condition_list);
@@ -136,20 +136,20 @@ public class RecommendCloth {
         ArrayList<Condition> condition_list = new ArrayList<>();
 
         if(level==0){
-            condition_list.add(new Condition(0, new int[]{0, 1}));
-            condition_list.add(new Condition(1, new int[]{0, 1}));
+            condition_list.add(new Condition("매우 얇음", new String[]{"민소매", "반팔"}));
+            condition_list.add(new Condition("얇음", new String[]{"민소매", "반팔"}));
         }
         else if(1 <= level && level <= 2){
-            condition_list.add(new Condition(0, new int[]{1, 2}));
-            condition_list.add(new Condition(1, new int[]{1, 2}));
-            condition_list.add(new Condition(2, new int[]{1, 2}));
+            condition_list.add(new Condition("매우 얇음", new String[]{"반팔", "긴팔"}));
+            condition_list.add(new Condition("얇음", new String[]{"반팔", "긴팔"}));
+            condition_list.add(new Condition("보통", new String[]{"반팔", "긴팔"}));
         }
         else if(3 <= level && level <= 5){
-            condition_list.add(new Condition(2, new int[]{2, 3}));
-            condition_list.add(new Condition(3, new int[]{2, 3}));
+            condition_list.add(new Condition("보통", new String[]{"긴팔", "후드티"}));
+            condition_list.add(new Condition("두꺼움", new String[]{"긴팔", "후드티"}));
         }
         else if(6 <= level ){
-            condition_list.add(new Condition(4, new int[]{2, 3}));
+            condition_list.add(new Condition("매우 두꺼움", new String[]{"긴팔", "후드티"}));
         }
 
         return chooseClothes(clothes_top,condition_list);
@@ -165,20 +165,20 @@ public class RecommendCloth {
         ArrayList<Condition> condition_list = new ArrayList<>();
 
         if(level==0){
-            condition_list.add(new Condition(0, new int[]{0, 1}));
+            condition_list.add(new Condition("매우 얇음", new String[]{"핫팬츠", "반바지"}));
         }
         else if(1 <= level && level <= 2){
-            condition_list.add(new Condition(0, new int[]{0, 1, 2, 3}));
-            condition_list.add(new Condition(1, new int[]{0, 1, 2, 3}));
-            condition_list.add(new Condition(2, new int[]{0, 1}));
+            condition_list.add(new Condition("매우 얇음", new String[]{"핫팬츠", "반바지", "칠부바지", "긴바지"}));
+            condition_list.add(new Condition("얇음", new String[]{"핫팬츠", "반바지", "칠부바지", "긴바지"}));
+            condition_list.add(new Condition("보통", new String[]{"핫팬츠", "반바지"}));
         }
         else if(3 <= level && level <= 5){
-            condition_list.add(new Condition(2, new int[]{3}));
-            condition_list.add(new Condition(3, new int[]{3}));
+            condition_list.add(new Condition("보통", new String[]{"긴바지"}));
+            condition_list.add(new Condition("두꺼움", new String[]{"긴바지"}));
         }
         else if(6 <= level ){
-            condition_list.add(new Condition(3, new int[]{3}));
-            condition_list.add(new Condition(4, new int[]{3}));
+            condition_list.add(new Condition("두꺼움", new String[]{"긴바지"}));
+            condition_list.add(new Condition("매우 두꺼움", new String[]{"긴바지"}));
         }
 
         return chooseClothes(clothes_bottom,condition_list);
@@ -200,10 +200,10 @@ public class RecommendCloth {
     }
 
     public class Condition{
-        public int thickness;
-        public int[] info;
+        public String thickness;
+        public String[] info;
 
-        Condition(int thickness, int[] info){
+        Condition(String thickness, String[] info){
             this.thickness = thickness;
             this.info = info;
         }
