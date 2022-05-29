@@ -181,6 +181,29 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.main_frameLayout, fragmentCloset).commitAllowingStateLoss();
                     break;
                 case R.id.menu_home:
+                    mDBHelper = new DBHelper(getApplicationContext());
+                    m_Cloth_list = mDBHelper.get_cloth_list();
+                    clothesSet = new ClothesSet();
+                    for(Clothes c :m_Cloth_list){
+                        switch (c.type){
+                            case "아우터":
+                                clothesSet.outer.add(c);
+                                break;
+                            case "상의":
+                                clothesSet.top.add(c);
+                                break;
+                            case "하의":
+                                clothesSet.bottom.add(c);
+                                break;
+                        }
+                    }
+
+                    RecommendCloth recommend = new RecommendCloth(clothesSet,calculator);
+                    ClothesSet recommendClothes = recommend.recommend();
+
+                    bundle = new Bundle();
+                    bundle.putSerializable("clothes",recommendClothes);
+                    fragmentHome.setArguments(bundle);
                     transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
                     break;
                 case R.id.menu_weather:

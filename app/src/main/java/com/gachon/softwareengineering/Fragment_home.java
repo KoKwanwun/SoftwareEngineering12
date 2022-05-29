@@ -61,6 +61,8 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
+
     @Override
     public void onClick(View view) {
 
