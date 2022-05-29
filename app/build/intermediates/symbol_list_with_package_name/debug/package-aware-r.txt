@@ -2662,6 +2662,7 @@ id coordinator
 id cos
 id counterclockwise
 id currentState
+id current_temp
 id custom
 id customPanel
 id cut
@@ -2744,6 +2745,7 @@ id home
 id homeAsUp
 id honorRequest
 id horizontal_only
+id humidity
 id icon
 id icon_group
 id ifRoom
@@ -2799,6 +2801,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id max_temp
 id menu_bottom_navigation
 id menu_closet
 id menu_home
@@ -3013,7 +3016,11 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id weather
+id weather_image
+id weather_state
 id west
+id wind
 id withText
 id withinBounds
 id wrap
