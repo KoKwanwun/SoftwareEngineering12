@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     mDBHelper = new DBHelper(getApplicationContext());
                     m_Cloth_list = mDBHelper.get_cloth_list();
                     clothesSet = new ClothesSet();
-                    for(Clothes c :m_Cloth_list){
+                    for (Clothes c : m_Cloth_list){
                         switch (c.type){
                             case "아우터":
                                 clothesSet.outer.add(c);
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                     ClothesSet recommendClothes = recommend.recommend();
 
                     bundle = new Bundle();
-                    bundle.putSerializable("clothes",recommendClothes);
+                    bundle.putSerializable("clothes", recommendClothes);
                     fragmentHome.setArguments(bundle);
                     transaction.replace(R.id.main_frameLayout, fragmentHome).commitAllowingStateLoss();
                     break;

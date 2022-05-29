@@ -4,6 +4,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="옷 등록"
+            android:textSize="20dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/jalnan"
+            android:padding="10dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,9 +26,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  사진  "
+            android:text="   사진   "
             android:textSize="15dp"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/nanumgothic"/>
 
         <ImageView
             android:id="@+id/imgV"
@@ -27,12 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  품목  "
-            android:textSize="15dp"/>
+            android:text="   품목   "
+            android:textSize="15dp"
+            android:fontFamily="@font/nanumgothic"/>
 
         <Spinner
             android:id="@+id/itemCategory"
@@ -45,12 +63,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="두께감"
-            android:textSize="15dp"/>
+            android:text=" 두께감 "
+            android:textSize="15dp"
+            android:fontFamily="@font/nanumgothic"/>
         <Spinner
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -63,13 +84,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="상세정보"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:fontFamily="@font/nanumgothic" />
 
         <Spinner
             android:id="@+id/info"
@@ -89,14 +113,17 @@
             android:id="@+id/signUpClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="등록"/>
+            android:backgroundTint="@color/btnColor2"
+            android:text="등록"
+            android:fontFamily="@font/nanumgothic"/>
         <Button
             android:id="@+id/backbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="뒤로가기"
-            android:backgroundTint="@color/black"
-            android:layout_marginLeft="20dp"/>
+            android:backgroundTint="@color/btnColor"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumgothic"/>
     </LinearLayout>
 
 
