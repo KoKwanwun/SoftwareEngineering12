@@ -64,15 +64,6 @@ public class MainActivity extends AppCompatActivity {
         //api 테스트 코드
         Toast.makeText(this, "오늘 체감온도는 "+String.valueOf(Math.round(wct))+"도 입니다", Toast.LENGTH_SHORT).show();
         //
-
-        /*
-        temperature: 기온
-        rainPerHour: 시간당 강수량(mm)
-        wind: 풍속(m/s)
-        humidity: 습도(%)
-        precipitation: 강수형태(없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7))
-        maxTemp: 최고기온
-         */
     }
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -107,6 +98,17 @@ public class MainActivity extends AppCompatActivity {
                 calculator.humidity = api.getHumidity();
                 calculator.precipitation = api.getPrecipitation();
                 calculator.maxTemp = api.getMaxTemp();
+                calculator.sky = api.getSky();
+
+                /*
+                temperature: 기온
+                rainPerHour: 시간당 강수량(mm)
+                wind: 풍속(m/s)
+                humidity: 습도(%)
+                precipitation: 강수형태(없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7))
+                maxTemp: 최고기온
+                sky: 하늘상태(맑음(1), 구름많음(3), 흐림(4))
+                */
 
                 apiFinished = true;
             }catch(Exception e){

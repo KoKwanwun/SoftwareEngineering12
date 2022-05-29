@@ -9,6 +9,7 @@ public class WindChillTemperature implements Serializable{
     public float wind = 0.0F;
     public int humidity = 0;
     public int precipitation = 0;
+    public int sky = 0;
     public double WCT = 0;
 
 
