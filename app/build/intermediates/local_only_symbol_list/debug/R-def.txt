@@ -18,11 +18,13 @@ drawable ic_launcher_foreground
 drawable menu_item_color
 drawable person
 drawable weather
+id TempImgV
 id add_close
 id backbtn
 id current_temp
 id del_close
 id humidity
+id imgV
 id info
 id itemCategory
 id listView
@@ -34,6 +36,10 @@ id menu_home
 id menu_weather
 id signUpClose
 id thickness
+id tv_id
+id tv_info
+id tv_thick
+id tv_type
 id weather
 id weather_image
 id weather_state
@@ -41,6 +47,7 @@ id wind
 layout activity_add_close
 layout activity_loading
 layout activity_main
+layout cloth_list
 layout menu_closet
 layout menu_home
 layout menu_weather
