@@ -63,7 +63,6 @@ public class MyAdapter extends BaseAdapter {
         TextView tv_type=(TextView) view.findViewById(R.id.tv_type);
         TextView tv_thick=(TextView) view.findViewById(R.id.tv_thick);
         TextView tv_info=(TextView) view.findViewById(R.id.tv_info);
-        TextView tv_id=(TextView)view.findViewById(R.id.tv_id);
 
 
         Clothes now_cloth=clist.get(position);
@@ -71,7 +70,6 @@ public class MyAdapter extends BaseAdapter {
         File file=new File(filename);
         Bitmap bitmap= BitmapFactory.decodeFile(file.getAbsolutePath()); //절대경로를 통해 비트맵 생성 후 삽입
         iv.setImageBitmap(bitmap);
-        tv_id.setText(String.valueOf(now_cloth.id));
         tv_type.setText(now_cloth.type);
         tv_thick.setText(now_cloth.thickness);
         tv_info.setText(now_cloth.info);

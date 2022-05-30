@@ -90,12 +90,9 @@ public class FragmentAddClothes extends Fragment {
             {
                 if (result.getResultCode() == RESULT_OK)
                 {
-                    //Log.e(TAG, "result : " + result);
                     Intent intent = result.getData();
-                    //Log.e(TAG, "intent : " + intent);
                     uri = intent.getData();
                     suri=getPath(uri);   //절대경로로 저장
-                    //System.out.println("선택한 옷의 uri는 "+ uri);
                     IV.setImageURI(uri);
 
                 }
@@ -156,8 +153,6 @@ public class FragmentAddClothes extends Fragment {
                 //getSelectedItem().toString으로 문자열로 정상적으로 받을 수 있음.        이미지도 추가.
                 mDBHelper.InsertCloth(itemCategory.getSelectedItem().toString(),thickness.getSelectedItem().toString(),info.getSelectedItem().toString(),suri);
                 Toast.makeText(getContext(), "옷이 옷장에 추가되었습니다!", Toast.LENGTH_SHORT).show();
-                //((Fragment_closet) getSupportFragmentManager().findFragmentByTag("fragmentCloset")).displayClothes();
-                //System.out.println("데이터 수정이 있을 수 있음으로 디스플레이 메소드 호출");
             }
         });
 
