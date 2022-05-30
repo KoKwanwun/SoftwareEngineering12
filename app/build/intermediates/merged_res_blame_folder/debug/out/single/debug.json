@@ -12,6 +12,10 @@
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\menu_closet.xml"
     },
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_cloth_list.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\cloth_list.xml"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
