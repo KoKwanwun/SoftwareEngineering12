@@ -54,7 +54,6 @@ public class Fragment_closet extends Fragment implements View.OnClickListener,My
 
         lvlist=(ListView)v.findViewById(R.id.listView);
         ct=container.getContext();
-        displayClothes();
 
         lvlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -96,6 +95,12 @@ public class Fragment_closet extends Fragment implements View.OnClickListener,My
             }
         });
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayClothes();
     }
 
     void displayClothes() {
