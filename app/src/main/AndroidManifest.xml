@@ -29,10 +29,6 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".Add_close"
-            android:exported="true">
-        </activity>
     </application>
 
 </manifest>

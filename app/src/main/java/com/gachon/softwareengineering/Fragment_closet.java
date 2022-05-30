@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +116,6 @@ public class Fragment_closet extends Fragment implements View.OnClickListener,My
             adapter.addInformation(i);
         }
         lvlist.setAdapter(adapter);
-
     }
 
 
@@ -124,8 +125,9 @@ public class Fragment_closet extends Fragment implements View.OnClickListener,My
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.add_close:
-                Intent intent = new Intent(view.getContext(), Add_close.class);
-                startActivity(intent);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.main_frameLayout, new FragmentAddClothes()).commitAllowingStateLoss();
                 break;
             case R.id.del_close:
                 //아이디(정수)를 입력받게 하여 삭제, 혹은 리스트뷰에서 옷 항목 하나를 클릭하게 해서 삭제?

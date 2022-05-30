@@ -1,6 +1,8 @@
 package com.gachon.softwareengineering;
 
 
+import static android.app.Activity.RESULT_OK;
+
 import android.annotation.SuppressLint;
 import android.app.Instrumentation;
 import android.content.Intent;
@@ -11,7 +13,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,15 +29,20 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Add_close extends AppCompatActivity {
+public class FragmentAddClothes extends Fragment {
 
     ArrayList<String> infoList;
     ListView lvlist;
@@ -45,23 +54,23 @@ public class Add_close extends AppCompatActivity {
     private ActivityResultLauncher<Intent> launcher;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        mDBHelper=new DBHelper(this);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_close);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_add_close, container, false);
 
-        IV=(ImageView)findViewById(R.id.imgV);
-        final Spinner itemCategory = (Spinner) findViewById(R.id.itemCategory);
-        final Spinner info = (Spinner) findViewById(R.id.info);
+
+        mDBHelper=new DBHelper(getContext());
+        IV=(ImageView)view.findViewById(R.id.imgV);
+        final Spinner itemCategory = (Spinner) view.findViewById(R.id.itemCategory);
+        final Spinner info = (Spinner) view.findViewById(R.id.info);
 
         String[] itemList = getResources().getStringArray(R.array.itemCategory);
         infoList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.topInfo)));
 
-        final ArrayAdapter<String> adapter_info = new ArrayAdapter<String>(this,R.layout.spinner_item,infoList);
+        final ArrayAdapter<String> adapter_info = new ArrayAdapter<String>(getContext(),R.layout.spinner_item,infoList);
         adapter_info.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         info.setAdapter(adapter_info);
 
-        final ArrayAdapter<String> adapter_item = new ArrayAdapter<String>(this,R.layout.spinner_item,itemList);
+        final ArrayAdapter<String> adapter_item = new ArrayAdapter<String>(getContext(),R.layout.spinner_item,itemList);
         adapter_item.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         itemCategory.setAdapter(adapter_item);
 
@@ -75,23 +84,23 @@ public class Add_close extends AppCompatActivity {
             }
         });
         launcher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>()
+        {
+            @Override
+            public void onActivityResult(ActivityResult result)
+            {
+                if (result.getResultCode() == RESULT_OK)
                 {
-                    @Override
-                    public void onActivityResult(ActivityResult result)
-                    {
-                        if (result.getResultCode() == RESULT_OK)
-                        {
-                           //Log.e(TAG, "result : " + result);
-                            Intent intent = result.getData();
-                            //Log.e(TAG, "intent : " + intent);
-                            uri = intent.getData();
-                            suri=getPath(uri);   //절대경로로 저장
-                            //System.out.println("선택한 옷의 uri는 "+ uri);
-                            IV.setImageURI(uri);
+                    //Log.e(TAG, "result : " + result);
+                    Intent intent = result.getData();
+                    //Log.e(TAG, "intent : " + intent);
+                    uri = intent.getData();
+                    suri=getPath(uri);   //절대경로로 저장
+                    //System.out.println("선택한 옷의 uri는 "+ uri);
+                    IV.setImageURI(uri);
 
-                        }
-                    }
-                });
+                }
+            }
+        });
 
         itemCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -115,11 +124,11 @@ public class Add_close extends AppCompatActivity {
             }
         });
 
-        final Spinner thickness = (Spinner) findViewById(R.id.thickness);
+        final Spinner thickness = (Spinner) view.findViewById(R.id.thickness);
 
         String[] thick = getResources().getStringArray(R.array.thickness);
 
-        final ArrayAdapter<String> adapter_thickness = new ArrayAdapter<String>(this,R.layout.spinner_item,thick);
+        final ArrayAdapter<String> adapter_thickness = new ArrayAdapter<String>(getContext(),R.layout.spinner_item,thick);
         adapter_thickness.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         thickness.setAdapter(adapter_thickness);
 
@@ -137,7 +146,7 @@ public class Add_close extends AppCompatActivity {
             }
         });
 
-        Button signUpClose = findViewById(R.id.signUpClose);
+        Button signUpClose = view.findViewById(R.id.signUpClose);
 
 
         signUpClose.setOnClickListener(new View.OnClickListener() {
@@ -145,30 +154,30 @@ public class Add_close extends AppCompatActivity {
             public void onClick(View view) {
                 // 버튼 눌렀을때 옷이 등록되어 옷리스트에 정보가 뜨도록 넣어주세요
                 //getSelectedItem().toString으로 문자열로 정상적으로 받을 수 있음.        이미지도 추가.
-               mDBHelper.InsertCloth(itemCategory.getSelectedItem().toString(),thickness.getSelectedItem().toString(),info.getSelectedItem().toString(),suri);
-               Toast.makeText(getApplicationContext(), "옷이 옷장에 추가되었습니다!", Toast.LENGTH_SHORT).show();
+                mDBHelper.InsertCloth(itemCategory.getSelectedItem().toString(),thickness.getSelectedItem().toString(),info.getSelectedItem().toString(),suri);
+                Toast.makeText(getContext(), "옷이 옷장에 추가되었습니다!", Toast.LENGTH_SHORT).show();
                 //((Fragment_closet) getSupportFragmentManager().findFragmentByTag("fragmentCloset")).displayClothes();
                 //System.out.println("데이터 수정이 있을 수 있음으로 디스플레이 메소드 호출");
             }
         });
 
-        Button backbtn = findViewById(R.id.backbtn);
+        Button backbtn = view.findViewById(R.id.backbtn);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                    //((Fragment_closet) getSupportFragmentManager().findFragmentByTag("fragmentCloset")).displayClothes();
-                    //System.out.println("데이터 수정이 있을 수 있음으로 디스플레이 메소드 호출");
-
-                onBackPressed();
-
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.main_frameLayout, new Fragment_closet()).commitAllowingStateLoss();
             }
 
         });
+        return view;
     }
+
+
     public String getPath(Uri u){
-        Cursor cursor=getContentResolver().query(u,null,null,null,null);
+        Cursor cursor=getContext().getContentResolver().query(u,null,null,null,null);
         cursor.moveToNext();
         @SuppressLint("Range") String path=cursor.getString(cursor.getColumnIndex("_data"));
         cursor.close();
