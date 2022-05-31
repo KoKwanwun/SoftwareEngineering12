@@ -1217,6 +1217,8 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color btnColor
+color btnColor2
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -1765,6 +1767,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color skyBlue
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -2458,6 +2461,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable closet
 drawable clothes
+drawable clouds
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2517,11 +2521,20 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable person
+drawable rain
+drawable rainsnow
+drawable round
+drawable snow
+drawable sunny
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable weather
+font fontstyle
+font fontstylenanum
+font jalnan
+font nanumgothic
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2650,6 +2663,7 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id clothesImage
 id collapseActionView
 id compress
 id confirm_button
@@ -2885,6 +2899,9 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewBottom
+id recyclerViewOuter
+id recyclerViewTop
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2979,6 +2996,10 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
+id textView2
+id textView3
+id textView4
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3130,6 +3151,7 @@ layout abc_tooltip
 layout activity_add_close
 layout activity_loading
 layout activity_main
+layout cloth_item
 layout cloth_list
 layout custom_dialog
 layout design_bottom_navigation_item

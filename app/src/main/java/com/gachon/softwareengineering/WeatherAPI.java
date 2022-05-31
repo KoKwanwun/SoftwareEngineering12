@@ -61,7 +61,29 @@ public class WeatherAPI {
 
     public void apiLoad() throws IOException {
         //API 요청
-        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"); /*URL*/
+        String time = getTime();
+
+        precipitation = Integer.parseInt(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+                time, "obsrValue", "PTY"));
+        humidity = Integer.parseInt(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+                time, "obsrValue", "REH"));
+        rainPerHour = Float.parseFloat(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+                time, "obsrValue", "RN1"));
+        temperature = Float.parseFloat(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+                time, "obsrValue", "T1H"));
+        wind = Float.parseFloat(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
+                time, "obsrValue", "WSD"));
+
+        maxTemp = Float.parseFloat(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst",
+                "0200", "fcstValue", "TMX"));
+
+        sky = Integer.parseInt(apiRequest("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst",
+                time, "fcstValue", "SKY"));
+    }
+
+    private String apiRequest(String apiUrl, String time, String category, String itemCode) throws IOException{
+        //API 요청
+        StringBuilder urlBuilder = new StringBuilder(apiUrl); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "="
                 + SERVICE_KEY); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "="
@@ -73,9 +95,9 @@ public class WeatherAPI {
         urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "="
                 + URLEncoder.encode(getDate(), "UTF-8")); /*발표 날짜*/
         urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "="
-                + URLEncoder.encode(getTime(), "UTF-8")); /*정시단위*/
+                + URLEncoder.encode(time, "UTF-8")); /*정시단위*/
         urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "="
-                + URLEncoder.encode("55", "UTF-8")); /*예보지점의 X 좌표값*/
+                + URLEncoder.encode("60", "UTF-8")); /*예보지점의 X 좌표값*/
         urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "="
                 + URLEncoder.encode("127", "UTF-8")); /*예보지점의 Y 좌표값*/
 
@@ -99,111 +121,19 @@ public class WeatherAPI {
         rd.close();
         conn.disconnect();
 
-        //데이터 확인
-        Log.d("data",sb.toString());
-
         //데이터 파싱
+        String result = "0";
         try {
-            parsing(sb.toString());
+            result = parsing(sb.toString(), category, itemCode);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "="
-                + SERVICE_KEY); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "="
-                + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "="
-                + URLEncoder.encode("1000", "UTF-8")); /*한 페이지 결과 수*/
-        urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "="
-                + URLEncoder.encode("JSON", "UTF-8")); /*요청자료형식 JSON*/
-        urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "="
-                + URLEncoder.encode(getDate(), "UTF-8")); /*발표 날짜*/
-        urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "="
-                + URLEncoder.encode("0200", "UTF-8")); /*정시단위*/
-        urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "="
-                + URLEncoder.encode("55", "UTF-8")); /*예보지점의 X 좌표값*/
-        urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "="
-                + URLEncoder.encode("127", "UTF-8")); /*예보지점의 Y 좌표값*/
-
-        url = new URL(urlBuilder.toString());
-        conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-
-        //데이터 불러오기
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        sb = new StringBuilder();
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        rd.close();
-        conn.disconnect();
-
-        //데이터 확인
-        Log.d("data",sb.toString());
-
-        //데이터 파싱
-        try {
-            parsing2(sb.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "="
-                + SERVICE_KEY); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "="
-                + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "="
-                + URLEncoder.encode("1000", "UTF-8")); /*한 페이지 결과 수*/
-        urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "="
-                + URLEncoder.encode("JSON", "UTF-8")); /*요청자료형식 JSON*/
-        urlBuilder.append("&" + URLEncoder.encode("base_date","UTF-8") + "="
-                + URLEncoder.encode(getDate(), "UTF-8")); /*발표 날짜*/
-        urlBuilder.append("&" + URLEncoder.encode("base_time","UTF-8") + "="
-                + URLEncoder.encode(getTime(), "UTF-8")); /*정시단위*/
-        urlBuilder.append("&" + URLEncoder.encode("nx","UTF-8") + "="
-                + URLEncoder.encode("55", "UTF-8")); /*예보지점의 X 좌표값*/
-        urlBuilder.append("&" + URLEncoder.encode("ny","UTF-8") + "="
-                + URLEncoder.encode("127", "UTF-8")); /*예보지점의 Y 좌표값*/
-
-        url = new URL(urlBuilder.toString());
-        conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-
-        //데이터 불러오기
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        sb = new StringBuilder();
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        rd.close();
-        conn.disconnect();
-
-        //데이터 확인
-        Log.d("data",sb.toString());
-
-        //데이터 파싱
-        try {
-            parsing3(sb.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        return result;
     }
 
     //JSON 파싱
-    private void parsing(String strData) throws JSONException{
+    private String parsing(String strData, String category, String itemCode) throws JSONException{
         JSONObject jsonData = new JSONObject(strData);
         JSONObject response = jsonData.getJSONObject("response");
         JSONObject body = response.getJSONObject("body");
@@ -211,56 +141,17 @@ public class WeatherAPI {
         JSONArray itemArray = items.getJSONArray("item");
 
         JSONObject item;
-        item = itemArray.getJSONObject(0);
-        precipitation = Integer.parseInt(item.get("obsrValue").toString());
 
-        item = itemArray.getJSONObject(1);
-        humidity = Integer.parseInt(item.get("obsrValue").toString());
-
-        item = itemArray.getJSONObject(2);
-        rainPerHour = Float.parseFloat(item.get("obsrValue").toString());
-
-        item = itemArray.getJSONObject(3);
-        temperature = Float.parseFloat(item.get("obsrValue").toString());
-
-        item = itemArray.getJSONObject(7);
-        wind = Float.parseFloat(item.get("obsrValue").toString());
-    }
-
-    //JSON 파싱2
-    private void parsing2(String strData) throws JSONException{
-        JSONObject jsonData = new JSONObject(strData);
-        JSONObject response = jsonData.getJSONObject("response");
-        JSONObject body = response.getJSONObject("body");
-        JSONObject items = body.getJSONObject("items");
-        JSONArray itemArray = items.getJSONArray("item");
-
-        JSONObject item;
+        String result = "0";
         for(int i = 0; i < itemArray.length(); i++) {
             item = itemArray.getJSONObject(i);
-            if(item.get("category").equals("TMX")){
-                maxTemp = Float.parseFloat(item.get("fcstValue").toString());
+            if(item.get("category").equals(itemCode)){
+                result = item.get(category).toString();
                 break;
             }
         }
-    }
 
-    //JSON 파싱2
-    private void parsing3(String strData) throws JSONException{
-        JSONObject jsonData = new JSONObject(strData);
-        JSONObject response = jsonData.getJSONObject("response");
-        JSONObject body = response.getJSONObject("body");
-        JSONObject items = body.getJSONObject("items");
-        JSONArray itemArray = items.getJSONArray("item");
-
-        JSONObject item;
-        for(int i = 0; i < itemArray.length(); i++) {
-            item = itemArray.getJSONObject(i);
-            if(item.get("category").equals("SKY")){
-                sky = Integer.parseInt(item.get("fcstValue").toString());
-                break;
-            }
-        }
+        return result;
     }
 
     //날짜 가져오기

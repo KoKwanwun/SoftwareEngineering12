@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable_round.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable\\round.xml"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable_person.png.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable\\person.png"
     },
@@ -8,12 +12,16 @@
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable\\closet.png"
     },
     {
-        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_menu_closet.xml.flat",
-        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\menu_closet.xml"
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_sunny.png.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable-v24\\sunny.png"
     },
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_cloth_list.xml.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\cloth_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_menu_closet.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\menu_closet.xml"
     },
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -30,6 +38,10 @@
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_add_close.xml.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\activity_add_close.xml"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_clouds.png.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable-v24\\clouds.png"
     },
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -64,6 +76,14 @@
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_rain.png.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable-v24\\rain.png"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\font_jalnan.ttf.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\font\\jalnan.ttf"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable_clothes.png.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable\\clothes.png"
     },
@@ -80,6 +100,10 @@
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_snow.png.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable-v24\\snow.png"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
@@ -88,12 +112,28 @@
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\font_fontstylenanum.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\font\\fontstylenanum.xml"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\font_fontstyle.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\font\\fontstyle.xml"
+    },
+    {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable_menu_item_color.xml.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable\\menu_item_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_cloth_item.xml.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\layout\\cloth_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_rainsnow.png.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\drawable-v24\\rainsnow.png"
     },
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
@@ -106,6 +146,10 @@
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\font_nanumgothic.ttf.flat",
+        "source": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\src\\main\\res\\font\\nanumgothic.ttf"
     },
     {
         "merged": "C:\\Users\\kwj\\AndroidStudioProjects\\SoftwareEngineering12\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",

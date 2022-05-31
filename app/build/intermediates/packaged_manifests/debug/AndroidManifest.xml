@@ -37,10 +37,6 @@
             android:name="com.gachon.softwareengineering.MainActivity"
             android:exported="true" >
         </activity>
-        <activity
-            android:name="com.gachon.softwareengineering.Add_close"
-            android:exported="true" >
-        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
